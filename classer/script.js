@@ -8,16 +8,45 @@ var matrix = [
     [1, 1, 0, 2, 0]
 ];
 
-var element = document.getElementsByTagName("button");
-var element = document.getElementsByClassName("power");
-function changeColor(newColor) {
-    document.body.style.background = newColor
-  }
+var element1 = document.getElementsByTagName("button");
+var element2 = document.getElementsByClassName("button-power");
+
+
+
+function changeColor() {
+    let colorArr = ["red", "blue", "green", "yellow", "orange", "purple"]
+    let colorNumber = getRanInt(0, colorArr.length)
+
+    document.body.style.background = colorArr[colorNumber]
+}
+
+function refresh() {
+    location.reload()
+}
+
+function armagedon() {
+    for (var y = 0; y < matrix.length; y++) {
+        for (var x = 0; x < matrix[y].length; x++) {
+            matrix[y][x] = 66
+        }
+    }
+    grassArr.length = 0
+    grassEatArr.length = 0
+    PredatorArr.length = 0
+    GodArr.length = 0
+    BishopArr.length = 0
+
+}
 function grassnumber() {
     document.write(grassArr.length)
 }
+// console.log(element2["0"])
 
-console.log(element)
+// element2[0].addEventListener("click",changeColor)
+// read dom selector, getelement, dom events, refreshworld/newgenmatrix, armagedon
+// console.log(element)
+
+
 function genMatrix(w, h) {
     var matrix = [];
     for (var y = 0; y < h; y++) {
@@ -59,7 +88,7 @@ function beginingOfLife() {
     }
 }
 
-setInterval(beginingOfLife, 10000)
+// setInterval(beginingOfLife, 10000)
 
 
 var side = 60;
@@ -77,7 +106,7 @@ function setup() {
     frameRate(5);
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#acacac');
-    
+
 
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
@@ -104,10 +133,10 @@ function setup() {
         }
     }
 }
-console.log(grassArr)
+
 
 function draw() {
-    
+
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
             if (matrix[y][x] == 1) {
@@ -130,6 +159,9 @@ function draw() {
             }
             else if (matrix[y][x] == 5) {
                 fill("brown");
+            }
+            else if (matrix[y][x] == 66) {
+                fill("black");
             }
             rect(x * side, y * side, side, side);
         }
@@ -156,88 +188,4 @@ function draw() {
         BishopArr[i].eat()
     }
 }
-
-// //ES5
-
-// let obj = {};
-// let obj1 = new Object();
-
-// obj1.hasOwnProperty()
-
-
-// var arr = []; //or 
-// var arr1 = new Array;
-
-// Array.__proto__ = Object;
-
-// Object.__proto__ = null
-
-// Array.prototype.vazel = function () {
-//     //some code
-// }
-
-// var matrix = [];
-
-// matrix.vazel()
-
-// foo.__proto__ = Function();
-
-// function foo () {
-//     //some code
-// }
-
-
-// arr1.__proto__ = Array;
-// arr.push()
-
-
-// class Animal {
-//     constructor() {
-//         this.jump = true;
-//     }
-// }
-
-// function Grass(x, y, index) {
-//     this.x = x;
-//     this.y = y;
-//     this.index = index;
-// }
-
-// Grass.prototype.move() = function () {
-//     //some code
-// }
-
-// Grass.__proto__ = Animal
-
-// Grass.prototype.energy = 15
-
-// var grass = new Grass(1,2,1)
-// var grass1 = new Grass(2,3,1)
-
-
-// grass.move()
-// grass1.move()
-
-// //ES6
-// class Animal {
-//     constructor() {
-//         this.jump = true;
-//     }
-// }
-// class GrassEater extends Animal {
-//     constructor(x, y, index) {
-//         this.x = x;
-//         this.y = y;
-//         this.index = index;
-//     }
-
-//     move() {
-//         //some
-//     }
-// }
-
-// var grassEater = new GrassEater(4,5,2)
-
-
-
 

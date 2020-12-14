@@ -1,10 +1,7 @@
 class Bishop extends Livingcreature {
     constructor(x, y, index) {
         super(x, y, index)
-        this.x = x;
-        this.y = y;
-        this.index = index;
-        this.directions= []
+        this.directions = []
     }
     getNewCoordinates() {
         this.directions = [
@@ -12,14 +9,13 @@ class Bishop extends Livingcreature {
             [this.x + 1, this.y + 1]
         ];
     }
-    
+
     chooseCell(character) {
         this.getNewCoordinates();
-
         return super.chooseCell(character);
     }
 
-    
+
     eat() {
         var yntrvacner = []
 
@@ -32,22 +28,21 @@ class Bishop extends Livingcreature {
 
 
 
-        var newCell = random(yntrvacner)
+        var newCell = yntrvacner.length != 0 ? random(yntrvacner) : null;
 
         if (newCell) {
-            console.log(newCell)
             var newX = newCell[0];
             var newY = newCell[1];
-            var newBishop = new Bishop(newCell[0], newCell[1], 5);
+            var newBishop = new Bishop(newCell[0], newCell[1], this.index);
             BishopArr.push(newBishop);
 
             if (matrix[newY][newX] === 0) {
                 matrix[newY][newX] = this.index
-                matrix[this.y][this.x] = 5
+                
             }
             if (matrix[newY][newX] === 2) {
                 matrix[newY][newX] = this.index
-                matrix[this.y][this.x] = 5
+                
 
                 for (var i in grassEatArr) {
                     if (newX == grassEatArr[i].x && newY == grassEatArr[i].y) {
@@ -58,7 +53,7 @@ class Bishop extends Livingcreature {
             }
             if (matrix[newY][newX] === 1) {
                 matrix[newY][newX] = this.index
-                matrix[this.y][this.x] = 5
+
                 for (var i in grassArr) {
                     if (newX == grassArr[i].x && newY == grassArr[i].y) {
                         grassArr.splice(i, 1);
@@ -68,7 +63,7 @@ class Bishop extends Livingcreature {
             }
             if (matrix[newY][newX] === 3) {
                 matrix[newY][newX] = this.index
-                matrix[this.y][this.x] = 5
+
                 for (var i in PredatorArr) {
                     if (newX == PredatorArr[i].x && newY == PredatorArr[i].y) {
                         PredatorArr.splice(i, 1);
@@ -78,7 +73,7 @@ class Bishop extends Livingcreature {
             }
             if (matrix[newY][newX] === 4) {
                 matrix[newY][newX] = this.index
-                matrix[this.y][this.x] = 5
+
                 for (var i in GodArr) {
                     if (newX == GodArr[i].x && newY == GodArr[i].y) {
                         GodArr.splice(i, 1);
@@ -88,7 +83,6 @@ class Bishop extends Livingcreature {
             }
             if (matrix[newY][newX] === 11) {
                 matrix[newY][newX] = this.index
-                matrix[this.y][this.x] = 5
             }
         }
     }
