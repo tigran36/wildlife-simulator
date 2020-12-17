@@ -1,16 +1,17 @@
-var matrix = [
-    [0, 0, 1, 0, 0],
-    [1, 0, 0, 0, 0],
-    [0, 1, 0, 2, 0],
-    [0, 4, 1, 0, 0],
-    [1, 1, 5, 3, 0],
-    [1, 1, 0, 4, 0],
-    [1, 1, 0, 2, 0]
-];
+var matrix = [];
 
-var element1 = document.getElementsByTagName("button");
-var element2 = document.getElementsByClassName("button-power");
+var side = 60;
 
+var grassArr = []
+var grassEatArr = []
+var PredatorArr = []
+var GodArr = []
+var BishopArr = []
+
+function getselectsize() {
+    let select = document.getElementById("size")
+    return select.value
+}
 
 
 function changeColor() {
@@ -35,23 +36,13 @@ function armagedon() {
     PredatorArr.length = 0
     GodArr.length = 0
     BishopArr.length = 0
-
 }
-function grassnumber() {
-    document.write(grassArr.length)
-}
-// console.log(element2["0"])
 
-// element2[0].addEventListener("click",changeColor)
-// read dom selector, getelement, dom events, refreshworld/newgenmatrix, armagedon
-// console.log(element)
-
-
-function genMatrix(w, h) {
+function genMatrix(matrixsize) {
     var matrix = [];
-    for (var y = 0; y < h; y++) {
+    for (var y = 0; y < matrixsize; y++) {
         matrix[y] = [];
-        for (var x = 0; x < w; x++) {
+        for (var x = 0; x < matrixsize; x++) {
             var r = Math.floor(Math.random() * 100);
             if (r < 30) r = 0;
             else if (r < 60) r = 1;
@@ -69,40 +60,10 @@ function getRanInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function genRandomMatrix(w, h) {
-    var matrix = []
-    for (var i = 0; i < h; i++) {
-        matrix[i] = [];
-        for (var j = 0; j < w; j++) {
-
-            matrix[i][j] = getRanInt(0, 5)
-
-        }
-    }
-    return matrix
-}
-
-function beginingOfLife() {
-    if (grassEatArr.length === 0 && PredatorArr.length === 0) {
-        setup()
-    }
-}
-
-// setInterval(beginingOfLife, 10000)
-
-
-var side = 60;
-
-var grassArr = []
-var grassEatArr = []
-var PredatorArr = []
-var GodArr = []
-var BishopArr = []
 
 function setup() {
-    var w = getRanInt(8, 20)
-    var h = getRanInt(8, 20)
-    matrix = genMatrix(w, h);
+    let matrixsize = getselectsize()
+    matrix = genMatrix(matrixsize);
     frameRate(5);
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#acacac');
@@ -133,6 +94,7 @@ function setup() {
         }
     }
 }
+
 
 
 function draw() {
