@@ -19,6 +19,7 @@ class Predator extends GrassEater{
             }
         }
     }
+    // eats grasseaters, index 2
     
     mul() {
         var newCell = random(this.chooseCell(0));
@@ -29,6 +30,7 @@ class Predator extends GrassEater{
             this.energy = 8;
         }
     }
+    // multiplies just like grasseater
 
     die() {
         if (this.energy <= 0) {
@@ -41,4 +43,5 @@ class Predator extends GrassEater{
             matrix[this.y][this.x] = 0
         }
     }
+    // dies just like grasseater
 }

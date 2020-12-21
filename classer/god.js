@@ -29,4 +29,5 @@ class God extends Livingcreature{
             }
         }
     }
+    // stays in one place, when a grasseater or a predator touches it, it dies and the cell/square the animal died in turns orange(11)
 }

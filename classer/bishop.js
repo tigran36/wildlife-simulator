@@ -9,6 +9,8 @@ class Bishop extends Livingcreature {
             [this.x + 1, this.y + 1]
         ];
     }
+    // has a smaller viewpoint as it moves/multiples like a chess bishop
+    // crates a diagonal line from where it appeared and separates the canvas
 
     chooseCell(character) {
         this.getNewCoordinates();
@@ -25,10 +27,10 @@ class Bishop extends Livingcreature {
         random(this.chooseCell(3)) ? yntrvacner.push(random(this.chooseCell(3))) : null;
         random(this.chooseCell(4)) ? yntrvacner.push(random(this.chooseCell(4))) : null;
         random(this.chooseCell(11)) ? yntrvacner.push(random(this.chooseCell(11))) : null;
-
-
+        // makes an array and adds all possible cells 
 
         var newCell = yntrvacner.length != 0 ? random(yntrvacner) : null;
+        // finds out if the array isn't empty and choses a random cell ut of the available ones
 
         if (newCell) {
             var newX = newCell[0];
@@ -85,5 +87,6 @@ class Bishop extends Livingcreature {
                 matrix[newY][newX] = this.index
             }
         }
+        // can eat/multiply on anything 
     }
 }

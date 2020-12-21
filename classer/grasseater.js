@@ -3,12 +3,15 @@ class GrassEater extends Livingcreature {
         super(x, y, index);
         this.energy = 8;
     }
+    // has energy, when 12 multiples, when 0 dies
 
     chooseCell(character) {
         this.getNewCoordinates();
 
         return super.chooseCell(character);
     }
+    // updates the the directions before choosecell
+
 
     getNewCoordinates() {
         this.directions = [
@@ -22,6 +25,7 @@ class GrassEater extends Livingcreature {
             [this.x + 1, this.y + 1]
         ];
     }
+    // has its directions as a method as it needs to get updated everytime it moves
 
     move() {
         var empty = random(this.chooseCell(0));
@@ -38,6 +42,8 @@ class GrassEater extends Livingcreature {
         }
 
     }
+    // moves, finds empty cells around with the index of 0, which are empty cells
+
     eat() {
         var avGrass = random(this.chooseCell(1));
         if (avGrass) {
@@ -57,6 +63,8 @@ class GrassEater extends Livingcreature {
             }
         }
     }
+    // eats grass by finding cells with index of 1
+
     mul() {
         var newCell = random(this.chooseCell(0));
         if (this.energy >= 12 && newCell) {
@@ -66,6 +74,7 @@ class GrassEater extends Livingcreature {
             this.energy = 8;
         }
     }
+    // multiplies in empty cells, when energy is 12
 
     die() {
         if (this.energy <= 0) {
@@ -78,5 +87,6 @@ class GrassEater extends Livingcreature {
             matrix[this.y][this.x] = 0
         }
     }
+    // dies when energy is 0, removes the certain character from its array
 
 }

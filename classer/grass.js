@@ -10,4 +10,5 @@ class Grass extends Livingcreature{
             this.multiply = 0;
         }
     }
+    // multiplies in empty cells
 }

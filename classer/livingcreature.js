@@ -1,4 +1,5 @@
 class Livingcreature {
+    // the most basic class, not in the game, but is global so other classes extend on it
     constructor(x, y, index) {
         this.x = x;
         this.y = y;
@@ -14,6 +15,7 @@ class Livingcreature {
             [this.x, this.y + 1],
             [this.x + 1, this.y + 1]
         ];
+        // the cells/squares the character can see
     }
     chooseCell(character) {
         var found = [];
@@ -28,6 +30,7 @@ class Livingcreature {
         }
         return found;
     }
+    // finds all available cell/square around of the given index, and randomly chooses one
 }
 
 
